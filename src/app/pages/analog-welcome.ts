@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-analog-welcome',
@@ -202,7 +202,8 @@ import { Component } from '@angular/core';
       }
       .count {
         margin-left: 0.25rem;
-        font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+        font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+          monospace;
       }
     `,
   ],
@@ -241,7 +242,7 @@ import { Component } from '@angular/core';
           </div>
         </div>
       </section>
-    <section id="counter-demo" class="section">
+      <section id="counter-demo" class="section">
         <div class="counter-container">
           <h2 class="counter-heading">Counter</h2>
           <p class="counter-description">
@@ -256,8 +257,8 @@ import { Component } from '@angular/core';
   `,
 })
 export class AnalogWelcome {
-  count = 0;
+  count = signal(0);
   increment() {
-    this.count++;
+    this.count.update((c) => c + 1);
   }
 }
