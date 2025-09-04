@@ -5,7 +5,7 @@ import { createBrowserClient } from "@supabase/ssr";
   providedIn: 'root',
 })
 export class SupabaseAuthService {
-  private supabase = createBrowserClient(import.meta.env['VITE_PUBLIC_SUPABASE_URL'], import.meta.env['VITE_PUBLIC_SUPABASE_ANON_KEY']);
+  private supabase = createBrowserClient(import.meta.env['VITE_SUPABASE_DATABASE_URL'], import.meta.env['VITE_SUPABASE_ANON_KEY']);
   private session = signal<unknown>(null);
   readonly loggedIn = computed(() => !!this.session());
 

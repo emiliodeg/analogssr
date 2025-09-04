@@ -2,7 +2,7 @@ import { ServerContext } from '@analogjs/router/tokens';
 import { createServerClient, parseCookieHeader, serializeCookieHeader } from '@supabase/ssr';
 
 export function createClient(context: ServerContext) {
-  return createServerClient(process.env['VITE_PUBLIC_SUPABASE_URL']!, process.env['VITE_PUBLIC_SUPABASE_ANON_KEY']!, {
+  return createServerClient(process.env['VITE_SUPABASE_DATABASE_URL']!, process.env['VITE_SUPABASE_ANON_KEY']!, {
     cookies: {
       getAll() {
         const cookies = parseCookieHeader(context.req.headers.cookie ?? '');
