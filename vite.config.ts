@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-
+import devtoolsJson from 'vite-plugin-devtools-json';
 import { defineConfig } from 'vite';
 import analog from '@analogjs/platform';
 import tailwindcss from '@tailwindcss/vite';
@@ -10,11 +10,15 @@ export default defineConfig(({ mode }) => ({
     target: ['es2020'],
   },
   resolve: {
-    mainFields: ['module'],
+    mainFields: ['module', 'browser'],
+  },
+  optimizeDeps: {
+    include: ['@supabase/supabase-js', '@supabase/ssr']
   },
   plugins: [
     analog(),
-    tailwindcss()
+    tailwindcss(),
+    devtoolsJson()
   ],
   test: {
     globals: true,
