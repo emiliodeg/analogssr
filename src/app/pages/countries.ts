@@ -1,6 +1,5 @@
-import { HttpClient, httpResource } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, computed, inject, input, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-countries',
@@ -33,7 +32,7 @@ export class Countries {
 
   addCountry() {
     this.http
-      .get('http://localhost:5173/api/v1/countries')
+      .get('/api/v1/countries')
       .subscribe(({ countries }: any) => this.extra.set(countries));
   }
 }
